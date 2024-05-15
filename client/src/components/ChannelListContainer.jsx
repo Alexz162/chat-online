@@ -1,10 +1,10 @@
 import { ChannelList, useChatContext } from "stream-chat-react";
 import Cookies from "universal-cookie";
 
-//import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
+import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
 import HospitalIcon from "../assets/hospital.png";
 import LogoutIcon from "../assets/logout.png";
-import ChannelSearch from "./ChannelSearch";
+
 
 const SideBar = () => (
   <div className="channel-list__sidebar">
@@ -34,6 +34,54 @@ const ChannelListContainer = () => {
       <div className="channel-list__list__wrapper">
         <CompanyHeader />
         <ChannelSearch />
+        <ChannelList
+          filters={{}}
+          channelRenderFilterFn={()=>{}}
+          List={(listProps)=>(
+            <TeamChannelList {...listProps} type='team'  />
+          )}
+          Preview={(previewProps)=>(
+            <TeamChannelPreview
+              {...previewProps}
+            />
+          )}
+        />
+        <ChannelList
+          filters={{}}
+          channelRenderFilterFn={()=>{}}
+          List={(listProps)=>(
+            <TeamChannelList {...listProps} type='team'  />
+          )}
+          Preview={(previewProps)=>(
+            <TeamChannelPreview
+              {...previewProps}
+            />
+          )}
+        />
+        <ChannelList
+          filters={{}}
+          channelRenderFilterFn={()=>{}}
+          List={(listProps)=>(
+            <TeamChannelList {...listProps} type='messaging'  />
+          )}
+          Preview={(previewProps)=>(
+            <TeamChannelPreview
+              {...previewProps}
+            />
+          )}
+        />
+        <ChannelList
+          filters={{}}
+          channelRenderFilterFn={()=>{}}
+          List={(listProps)=>(
+            <TeamChannelList {...listProps} type='messaging'  />
+          )}
+          Preview={(previewProps)=>(
+            <TeamChannelPreview
+              {...previewProps}
+            />
+          )}
+        />
       </div>
     </>
   );
