@@ -1,4 +1,6 @@
-import { Channel, useChatContext } from "stream-chat-react";
+import { Channel, useChatContext, MessageTeam } from "stream-chat-react";
+import ChannelInner from "./ChannelInner";
+import TeamMessage from "./TeamMessage";
 
 //import { ChannelInner, CreateChannel, EditChannel, TeamMessage } from './';
 
@@ -17,9 +19,33 @@ export default function ChannelContainer({
       </div>
     );
   }
+
   if (isEditing) {
-    return <EditChannel />;
+    return (
+      <div className="channel__container">
+        <EditChannel setIsEditing={setIsEditing} />
+      </div>
+    );
   }
 
-  return <div>ChannelContainer</div>;
+  const EmptyState = () => (
+    <div className="channel-empty__container">
+      <p className="channel-empty__first">
+        This is the beginning of your chat history.
+      </p>
+      <p className="channel-empty__second">
+        Send messages, attachments, links, emojis, and more!
+      </p>
+    </div>
+  );
+  return (
+    <div className=" channel__container">
+      <Channel
+        EmptyStateIndicator={EmptyState}
+        Message={(messageProps, i) => <TeamMessage key={i} {...messageProps} />}
+      >
+        <ChannelInner setIsEditing={setIsEditing} />
+      </Channel>
+    </div>
+  );
 }
