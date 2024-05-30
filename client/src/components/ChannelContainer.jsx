@@ -1,4 +1,4 @@
-import { Channel, useChatContext, MessageTeam } from "stream-chat-react";
+import { Channel, useChatContext } from "stream-chat-react";
 import ChannelInner from "./ChannelInner";
 import TeamMessage from "./TeamMessage";
 
